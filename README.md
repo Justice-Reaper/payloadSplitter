@@ -6,7 +6,7 @@ A Bash script to split large files into smaller chunks with customizable sizes
 ```
 # ./payloadSplitter.sh
 ❌ ERROR: Incorrect usage
-📋 Usage: ./payloadsplitter.sh original_file.txt payloads_per_file
+📋 Usage: ./payloadsplitter.sh original_payloads_file.txt payloads_per_file
 ```
 
 # Usage
