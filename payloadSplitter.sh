@@ -10,22 +10,22 @@ NC='\033[0m'
 
 if [ $# -ne 2 ]; then
     echo -e "${RED}❌ ERROR: Incorrect usage${NC}"
-    echo -e "${YELLOW}📋 Usage: $0 original_file.txt payloads_per_file${NC}"
+    echo -e "${YELLOW}📋 Usage: $0 original_payloads_file.txt payloads_per_file${NC}"
     exit 1
 fi
 
-original_file="$1"
+original_payloads_file="$1"
 payloads_per_file="$2"
 directory="payloads"
 
-if [ ! -f "$original_file" ]; then
-    echo -e "${RED}❌ ERROR: File '$original_file' does not exist${NC}"
+if [ ! -f "$original_payloads_file" ]; then
+    echo -e "${RED}❌ ERROR: File '$original_payloads_file' does not exist${NC}"
     exit 1
 fi
 
 mkdir -p "$directory"
 
-total_lines=$(wc -l < "$original_file")
+total_lines=$(wc -l < "$original_payloads_file")
 num_files=$(( (total_lines + payloads_per_file - 1) / payloads_per_file ))
 
 echo -e "${PURPLE}🚀 Starting payload division...${NC}"
@@ -57,7 +57,7 @@ for ((i=1; i<=num_files; i++)); do
     fi
     
     output_file="$directory/payloads_$i.txt"
-    sed -n "${start},${end}p" "$original_file" > "$output_file"
+    sed -n "${start},${end}p" "$original_payloads_file" > "$output_file"
     
     show_progress "$i" "$num_files"
     
