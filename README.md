@@ -1,5 +1,5 @@
 # PayloadSplitter
-A Bash script to split large files into smaller chunks with customizable sizes. Features colored output, progress tracking, and automatic directory organization for efficient file management
+A Bash script to split large files into smaller chunks with customizable sizes
 
 # Help panel
 
