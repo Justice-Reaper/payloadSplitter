@@ -1,4 +1,4 @@
-# PayloadSplitter
+# payloadSplitter
 A Bash script to split large files into smaller chunks with customizable sizes
 
 # Help panel
