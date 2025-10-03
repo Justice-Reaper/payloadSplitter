@@ -10,7 +10,7 @@ NC='\033[0m'
 
 if [ $# -ne 2 ]; then
     echo -e "${RED}❌ ERROR: Incorrect usage${NC}"
-    echo -e "${YELLOW}📋 Usage: $0 original_payloads_file.txt payloads_per_file${NC}"
+    echo -e "${YELLOW}📋 Usage: $(basename $0) original_payloads_file.txt payloads_per_file${NC}"
     exit 1
 fi
 
