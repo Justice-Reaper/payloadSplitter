@@ -1,18 +1,18 @@
 #!/bin/bash
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-NC='\033[0m'
-
 script_name=$(basename "$0")
 
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[1;33m'
+blue='\033[0;34m'
+purple='\033[0;35m'
+cyan='\033[0;36m'
+NC='\033[0m'
+
 if [ $# -ne 2 ]; then
-    echo -e "${RED}❌ ERROR: Incorrect usage${NC}"
-    echo -e "${YELLOW}📋 Usage: $script_name original_payloads_file.txt payloads_per_file${NC}"
+    echo -e "${red}❌ ERROR: Incorrect usage${nc}"
+    echo -e "${yellow}📋 Usage: $script_name original_payloads_file.txt payloads_per_file${nc}"
     exit 1
 fi
 
@@ -21,7 +21,7 @@ payloads_per_file="$2"
 directory="payloads"
 
 if [ ! -f "$original_payloads_file" ]; then
-    echo -e "${RED}❌ ERROR: File '$original_payloads_file' does not exist${NC}"
+    echo -e "${red}❌ ERROR: File '$original_payloads_file' does not exist${nc}"
     exit 1
 fi
 
@@ -30,11 +30,11 @@ mkdir -p "$directory"
 total_lines=$(wc -l < "$original_payloads_file")
 num_files=$(( (total_lines + payloads_per_file - 1) / payloads_per_file ))
 
-echo -e "${PURPLE}🚀 Starting payload division...${NC}"
-echo -e "${CYAN}📊 Total payloads: $total_lines${NC}"
-echo -e "${CYAN}📦 Files to create: $num_files${NC}"
-echo -e "${CYAN}🎯 Payloads per file: $payloads_per_file${NC}"
-echo -e "${YELLOW}⏳ Processing...${NC}"
+echo -e "${purple}🚀 Starting payload division...${nc}"
+echo -e "${cyan}📊 Total payloads: $total_lines${nc}"
+echo -e "${cyan}📦 Files to create: $num_files${nc}"
+echo -e "${cyan}🎯 Payloads per file: $payloads_per_file${nc}"
+echo -e "${yellow}⏳ Processing...${nc}"
 
 show_progress() {
     local current=$1
@@ -44,10 +44,10 @@ show_progress() {
     local completed=$((current * width / total))
     local remaining=$((width - completed))
     
-    printf "\r${BLUE}[${NC}"
-    printf "${GREEN}%${completed}s${NC}" | tr ' ' '='
-    printf "${BLUE}%${remaining}s${NC}" | tr ' ' ' '
-    printf "${BLUE}] ${percentage}%% (%d/%d)${NC}" "$current" "$total"
+    printf "\r${blue}[${nc}"
+    printf "${green}%${completed}s${nc}" | tr ' ' '='
+    printf "${blue}%${remaining}s${nc}" | tr ' ' ' '
+    printf "${blue}] ${percentage}%% (%d/%d)${nc}" "$current" "$total"
 }
 
 for ((i=1; i<=num_files; i++)); do
@@ -66,6 +66,6 @@ for ((i=1; i<=num_files; i++)); do
     sleep 0.1
 done
 
-echo -e "\n\n${GREEN}✅ Division completed!${NC}"
-echo -e "${GREEN}📁 Files are located in: ${PURPLE}$directory/${NC}"
-echo -e "${GREEN}🎯 Each file contains: ${PURPLE}$payloads_per_file payloads${NC}"
+echo -e "\n\n${green}✅ Division completed!${nc}"
+echo -e "${green}📁 Files are located in: ${purple}$directory/${nc}"
+echo -e "${green}🎯 Each file contains: ${purple}$payloads_per_file payloads${nc}"
