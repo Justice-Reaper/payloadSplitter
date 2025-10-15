@@ -8,9 +8,11 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
+script_name=$(basename "$0")
+
 if [ $# -ne 2 ]; then
     echo -e "${RED}❌ ERROR: Incorrect usage${NC}"
-    echo -e "${YELLOW}📋 Usage: $(basename $0) original_payloads_file.txt payloads_per_file${NC}"
+    echo -e "${YELLOW}📋 Usage: $script_name original_payloads_file.txt payloads_per_file${NC}"
     exit 1
 fi
 
